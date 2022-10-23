@@ -10,7 +10,7 @@ namespace laba3
     {
         static void Main(string[] args)
         {
-            N5();
+            N6();
             Console.ReadLine();
 
 
@@ -309,7 +309,221 @@ namespace laba3
 
         }
         // 3 5 -3 -4 2 -5
+        public static void N6() 
+        {
+            Console.WriteLine("Введите размер массива");
+            int l = int.Parse(Console.ReadLine());
+            double[] mas = new double[l];
+            Console.WriteLine("Введите элементы массива через пробел");
+            string line = Console.ReadLine();
+            string[] splitString = line.Split(' ');
+            for (int i = 0; i <= l; i++)
+            {
+                try
+                {
+                    int element = Convert.ToInt32(splitString[i]);
+                    mas[i] = element;
+                    Console.Write(" " + mas[i]);
+                }
+                catch
+                {
+
+                }
+            }
+            Console.WriteLine(" ");
+
+            Console.WriteLine("Введите число р");
+            int p = int.Parse(Console.ReadLine());
+            double sum = 0;
+            double sreA;
+            double close=0;
+            for (int i = 0; i < mas.Length; i++)
+            {
+                sum +=Math.Abs(mas[i]);
+            }
+            sreA = sum / mas.Length;
+            int k = 0;
+            for (int i = 0; i <= mas.Length; i++)
+            {
+                for (int j = i+1; j < mas.Length-1; j++)
+                {
+
+                    if (Math.Abs(sreA-mas[i])< Math.Abs(sreA - mas[j]))
+                    {
+                        close = mas[i];
+                        k = i;
+                    }
+                    else
+                    {
+                        close = mas[j];
+                    k = j;
+                    }
+                }
+            }
+            Console.WriteLine(sreA);
+            Console.WriteLine(k);
+            double[] mas2 = new double[mas.Length+1];
+            int n = mas2.Length;
+            for (int i = 0; i <= mas2.Length; i++)
+            {
+                if (i == k + 1)
+                {
+                    try
+                    {
+
+                        mas2[i] = p;
+                    }
+                    catch { }
+                }
+                else if (i > k + 1)
+                {
+                    for (int j = k+1; j <mas.Length ; j++)
+                    { 
+                        try
+                          {
+                          mas2[j+1] = mas[j];
+                          }
+                        catch { }
+                          
+
+
+                        
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        
+                    mas2[i] = mas[i];
+                    }
+                    catch { }
+                }
+                try
+                { 
+                    Console.Write(" "+mas2[i]);
+                }
+                catch { }
+            }
+
+        }
+        public static void N7()
+        {
+            Console.WriteLine("Введите элементы массива через пробел");
+            string line = Console.ReadLine();
+            string[] splitString = line.Split(' ');
+            int[] mas = new int[splitString.Length];
+            for (int i = 0; i < splitString.Length; i++)
+                mas[i] = int.Parse(splitString[i]);
+
+            int k = -1000;
+            int c = -1;
+
+            try
+            {
+                for (int i = 0; i <= mas.Length; i++)
+                {
+                    if (k < mas[i])
+                    {
+                        k = mas[i];
+                        c++;
+                    }
+                }
+            }
+            catch { }
+
+            mas[c + 1] *= 2;
+
+            try
+            {
+                for (int i = 0; i <= mas.Length; i++)
+                {
+                    Console.Write($"{mas[i]} ");
+                }
+            }
+            catch { }
+
+        }
+        public static void N8()
+        {
+
+        }
+        public static void N9() 
+        {
+            Console.WriteLine("Введите элементы массива через пробел");
+            string line = Console.ReadLine();
+            string[] splitString = line.Split(' ');
+            int[] mas = new int[splitString.Length];
+            for (int i = 0; i < splitString.Length; i++)
+                mas[i] = int.Parse(splitString[i]);
+
+            int max = -1000;
+            int min = 1000;
+            int cMax = -1;
+            int cMin = -1;
+            double sum = 0;
+            int c = 0;
+            double srArif = 0;
+
+            try
+            {
+                for (int i = 0; i <= mas.Length; i++)
+                {
+                    if (max < mas[i])
+                    {
+                        max = mas[i];
+                        cMax = i;
+                    }
+                }
+
+            }
+            catch { }
+
+            try
+            {
+                for (int i = 0; i <= mas.Length; i++)
+                {
+                    if (min > mas[i])
+                    {
+                        min = mas[i];
+                        cMin = i;
+                    }
+                }
+
+            }
+            catch { }
+
+            try
+            {
+                if (cMax > cMin)
+                {
+                    for (int j = cMin + 1; j <= cMax - 1; j++)
+                    {
+                        sum += mas[j];
+                        c++;
+                    }
+                }
+                else if (cMax < cMin)
+                {
+                    for (int j = cMax + 1; j <= cMin - 1; j++)
+                    {
+                        sum += mas[j];
+                        c++;
+                    }
+                }
+            }
+            catch { }
+
+            try
+            {
+                srArif = sum / c;
+            }
+            catch { }
+
+            Console.WriteLine(srArif);
+
         }
     }
+}
 
 
