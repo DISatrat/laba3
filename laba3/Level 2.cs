@@ -10,7 +10,7 @@ namespace laba3
     {
         static void Main(string[] args)
         {
-            N8();
+            N12();
             Console.ReadLine();
 
 
@@ -213,7 +213,7 @@ namespace laba3
             {
                 if (i <= c)
                 {
-                    Console.Write(mas[i] );
+                    Console.Write(mas[i]);
                 }
                 else if (i > c)
                 {
@@ -246,7 +246,7 @@ namespace laba3
             Console.WriteLine(" ");
 
             int kMax = -1000;
-       
+
             int cMax = 0;
             for (int i = 0; i <= l; i++)
             {
@@ -261,21 +261,21 @@ namespace laba3
                 catch { }
             }
 
-                int kMin = 1000;
+            int kMin = 1000;
             int cMin = 0;
             int c = 0;
-                for (int i = cMax; i <= l; i++)
+            for (int i = cMax; i <= l; i++)
+            {
+                try
                 {
-                    try
+                    if (kMin > mas[i])
                     {
-                        if (kMin > mas[i])
-                        {
-                            kMin = mas[i];
-                        }
-                    cMin=i;
+                        kMin = mas[i];
                     }
-                    catch { }
+                    cMin = i;
                 }
+                catch { }
+            }
             //Console.WriteLine(kMax + " "+kMin);
             //Console.WriteLine(cMax + " " + cMin);
 
@@ -292,16 +292,16 @@ namespace laba3
 
             double[] mas2 = new double[c];
             int k = 0;
-            for (int i = cMax+1; i < cMin; i++)
+            for (int i = cMax + 1; i < cMin; i++)
             {
                 if (mas[i] < 0)
                 {
                     mas2[k] = mas[i];
-                        k++;
+                    k++;
                 }
-                try { 
-                Console.Write(" "+mas2[k-1]);
-                
+                try {
+                    Console.Write(" " + mas2[k - 1]);
+
                 }
                 catch { }
             }
@@ -309,7 +309,7 @@ namespace laba3
 
         }
         // 3 5 -3 -4 2 -5
-        public static void N6() 
+        public static void N6()
         {
             Console.WriteLine("Введите размер массива");
             int l = int.Parse(Console.ReadLine());
@@ -336,19 +336,19 @@ namespace laba3
             int p = int.Parse(Console.ReadLine());
             double sum = 0;
             double sreA;
-            double close=0;
+            double close = 0;
             for (int i = 0; i < mas.Length; i++)
             {
-                sum +=Math.Abs(mas[i]);
+                sum += Math.Abs(mas[i]);
             }
             sreA = sum / mas.Length;
             int k = 0;
             for (int i = 0; i <= mas.Length; i++)
             {
-                for (int j = i+1; j < mas.Length-1; j++)
+                for (int j = i + 1; j < mas.Length - 1; j++)
                 {
 
-                    if (Math.Abs(sreA-mas[i])< Math.Abs(sreA - mas[j]))
+                    if (Math.Abs(sreA - mas[i]) < Math.Abs(sreA - mas[j]))
                     {
                         close = mas[i];
                         k = i;
@@ -356,13 +356,13 @@ namespace laba3
                     else
                     {
                         close = mas[j];
-                    k = j;
+                        k = j;
                     }
                 }
             }
             Console.WriteLine(sreA);
             Console.WriteLine(k);
-            double[] mas2 = new double[mas.Length+1];
+            double[] mas2 = new double[mas.Length + 1];
             int n = mas2.Length;
             for (int i = 0; i <= mas2.Length; i++)
             {
@@ -377,31 +377,29 @@ namespace laba3
                 }
                 else if (i > k + 1)
                 {
-                    for (int j = k+1; j <mas.Length ; j++)
-                    { 
+                    for (int j = k + 1; j < mas.Length; j++)
+                    {
                         try
-                          {
-                          mas2[j+1] = mas[j];
-                          }
+                        {
+                            mas2[j + 1] = mas[j];
+                        }
                         catch { }
-                          
 
 
-                        
                     }
                 }
                 else
                 {
                     try
                     {
-                        
-                    mas2[i] = mas[i];
+
+                        mas2[i] = mas[i];
                     }
                     catch { }
                 }
                 try
-                { 
-                    Console.Write(" "+mas2[i]);
+                {
+                    Console.Write(" " + mas2[i]);
                 }
                 catch { }
             }
@@ -507,7 +505,7 @@ namespace laba3
                 Console.Write(" " + mas[i]);
             }
         }
-        public static void N9() 
+        public static void N9()
         {
             Console.WriteLine("Введите элементы массива через пробел");
             string line = Console.ReadLine();
@@ -582,6 +580,83 @@ namespace laba3
             Console.WriteLine(srArif);
 
         }
+        public static void N10()
+        {
+            Console.WriteLine("Введите размер массива");
+            int l = int.Parse(Console.ReadLine());
+            double[] mas = new double[l];
+            Console.WriteLine("Введите элементы массива через пробел");
+            string line = Console.ReadLine();
+            string[] splitString = line.Split(' ');
+            for (int i = 0; i < l; i++)
+            {
+                try
+                {
+                    double element = Convert.ToDouble(splitString[i]);
+                    mas[i] = element;
+                }
+                catch { }
+            }
+
+            double kMix = 1000;
+
+            int cMix = 0;
+            for (int i = 0; i <= l; i++)
+            {
+                try
+                {
+                    if (kMix > mas[i])
+                    {
+                        kMix = mas[i];
+                        cMix = i;
+                    }
+                }
+                catch { }
+            }
+            Console.WriteLine(cMix);
+            double[] mas2 = new double[mas.Length - 1];
+            for (int i = 0; i < mas.Length; i++)
+            {
+                if (i == cMix)
+                {
+                    try
+                    {
+
+                    mas2[i] = mas[i + 1];
+                    }
+                    catch { }
+                }
+                else if (i > cMix)
+                {
+                    for (int j = i+1; j < mas.Length; j++)
+                    {
+                        try
+                        {
+                        mas2[j-1] = mas[j];
+
+                        }
+                        catch { }
+
+                    }
+                }
+                else
+                {
+                    try
+                    {
+
+                        mas2[i] = mas[i];
+                    }
+                    catch { }
+                }
+                try 
+                {
+                    
+                    Console.Write(" "+mas2[i]);
+                }
+                catch { }
+            }
+
+        }
         public static void N11()
     {
         Console.WriteLine("Введите элементы массива через пробел");
@@ -638,7 +713,133 @@ namespace laba3
         }
         catch { }
     }
+        public static void N12()
+        {
+            Console.WriteLine("Введите размер массива");
+            int l = int.Parse(Console.ReadLine());
+            double[] mas = new double[l];
+            Console.WriteLine("Введите элементы массива через пробел");
+            string line = Console.ReadLine();
+            string[] splitString = line.Split(' ');
+            for (int i = 0; i <= l; i++)
+            {
+                try
+                {
+                    int element = Convert.ToInt32(splitString[i]);
+                    mas[i] = element;
+                    Console.Write(" " + mas[i]);
+                }
+                catch
+                {
 
+                }
+            }
+            Console.WriteLine(" ");
 
+            double kMin = 1000;
+
+            int cMin = 0;
+            for (int i = 0; i <= l; i++)
+            {
+                try
+                {
+                    if (mas[i] < 0)
+                    {
+                        kMin = mas[i];
+                        cMin = i;
+                        break;
+                    }
+                }
+                catch { }
+            }
+           
+            double kMax = -1000;
+
+            int cMax = 0;
+            for (int i = 0; i <= l; i++)
+            {
+                try
+                {
+                    if (kMax < mas[i])
+                    {
+                        kMax = mas[i];
+                        cMax = i;
+                    }
+                }
+                catch { }
+            }
+            
+            double sum = 0;
+            for (int i = cMax+1; i < mas.Length; i++)
+            {
+                sum += mas[i];
+            }
+
+            double[] mas2 = new double[mas.Length];
+            for (int i = 0; i < mas2.Length; i++)
+            {
+                if (i == cMin)
+                {
+                    mas2[i] = sum;
+                }
+                else
+                {
+                    mas2[i] = mas[i];
+                }
+                try
+                {
+
+                    Console.Write(" "+mas2[i]);
+                }
+                catch { }
+            }
+        }
+        public static void N13()
+        {
+            Console.WriteLine("Введите элементы массива через пробел");
+            string line = Console.ReadLine();
+            string[] splitString = line.Split(' ');
+            int[] mas = new int[splitString.Length];
+            for (int i = 0; i < splitString.Length; i++)
+                mas[i] = int.Parse(splitString[i]);
+
+            int max = -1000;
+            int index = 0;
+
+            try
+            {
+                for (int i = 0; i <= mas.Length; i++)
+                {
+                    if (i % 2 == 0 && i != 0 && mas[i] > max)
+                    {
+                        max = mas[i];
+                        index = i;
+                    }
+
+                }
+            }
+            catch { }
+
+            mas[index] = index;
+
+            try
+            {
+                for (int i = 0; i <= mas.Length; i++)
+                {
+                    Console.Write(mas[i] + " ");
+                }
+            }
+            catch { }
+        }
+        public static void N14()
+        {
+
+        }
+        public static void N15()
+        {
+
+        }
     }
 }
+
+
