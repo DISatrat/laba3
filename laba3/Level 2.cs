@@ -10,7 +10,7 @@ namespace laba3
     {
         static void Main(string[] args)
         {
-            N6();
+            N8();
             Console.ReadLine();
 
 
@@ -446,7 +446,66 @@ namespace laba3
         }
         public static void N8()
         {
+            Console.WriteLine("Введите размер массива");
+            int l = int.Parse(Console.ReadLine());
+            int[] mas = new int[l];
+            Console.WriteLine("Введите элементы массива через пробел");
+            string line = Console.ReadLine();
+            string[] splitString = line.Split(' ');
+            for (int i = 0; i <= l; i++)
+            {
+                try
+                {
+                    int element = Convert.ToInt32(splitString[i]);
+                    mas[i] = element;
+                    Console.Write(" " + mas[i]);
+                }
+                catch
+                {
 
+                }
+            }
+            Console.WriteLine(" ");
+            int kMax = -1000;
+            int cMax = 0;
+            for (int i = 0; i <= l; i++)
+            {
+                try
+                {
+                    if (kMax < mas[i])
+                    {
+                        kMax = mas[i];
+                        cMax = i;
+                    }
+                }
+                catch { }
+            }
+
+            int kMin = 1000;
+            int cMin = 0;
+            int c = 0;
+            for (int i = cMax; i <= l; i++)
+            {
+                try
+                {
+                    if (kMin > mas[i])
+                    {
+                        kMin = mas[i];
+                    }
+                    cMin = i;
+                }
+                catch { }
+            }
+            Console.WriteLine(cMin + " " + cMax);
+
+            int a = kMax;
+            mas[cMax] = mas[cMin];
+
+            mas[cMin] = kMax;
+            for (int i = 0; i < mas.Length; i++)
+            {
+                Console.Write(" " + mas[i]);
+            }
         }
         public static void N9() 
         {
@@ -523,7 +582,63 @@ namespace laba3
             Console.WriteLine(srArif);
 
         }
+        public static void N11()
+    {
+        Console.WriteLine("Введите элементы массива через пробел");
+        string line = Console.ReadLine();
+        string[] splitString = line.Split(' ');
+        int[] mas = new int[splitString.Length];
+        for (int i = 0; i < splitString.Length; i++)
+            mas[i] = int.Parse(splitString[i]);
+        Console.WriteLine("Введите P");
+        int p = int.Parse(Console.ReadLine());
+
+        int index = 0;
+
+        try
+        {
+            for (int i = 0; i <= mas.Length; i++)
+            {
+                if (mas[i] > 0)
+                {
+                    index = i;
+                }
+            }
+        }
+        catch { }
+
+        int[] mas2 = new int[mas.Length + 1];
+
+        try
+        {
+            for (int i = 0; i <= mas.Length; i++)
+            {
+                if (i == index + 1)
+                {
+                    mas2[i] = p;
+                }
+                else if (i <= index)
+                {
+                    mas2[i] = mas[i];
+                }
+                else if (i >= index + 1)
+                {
+                    mas2[i] = mas[i - 1];
+                }
+            }
+        }
+        catch { }
+
+        try
+        {
+            for (int i = 0; i <= mas2.Length; i++)
+            {
+                Console.Write(mas2[i] + " ");
+            }
+        }
+        catch { }
+    }
+
+
     }
 }
-
-
