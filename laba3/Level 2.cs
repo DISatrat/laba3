@@ -10,7 +10,7 @@ namespace laba3
     {
         static void Main(string[] args)
         {
-            N14();
+            N16();
             Console.ReadLine();
 
 
@@ -899,7 +899,66 @@ namespace laba3
         }
         public static void N15()
         {
+            Console.WriteLine("Введите элементы массива A через пробел");
+            string lineA = Console.ReadLine();
+            string[] splitStringA = lineA.Split(' ');
+            int[] masA = new int[splitStringA.Length];
+            for (int i = 0; i < splitStringA.Length; i++)
+                masA[i] = int.Parse(splitStringA[i]);
 
+            Console.WriteLine("Введите элементы массива B через пробел");
+            string lineB = Console.ReadLine();
+            string[] splitStringB = lineB.Split(' ');
+            int[] masB = new int[splitStringB.Length];
+            for (int i = 0; i < splitStringB.Length; i++)
+                masB[i] = int.Parse(splitStringB[i]);
+
+            int k = 0;
+            int l = 0;
+            int c = 0;
+            int index = 0;
+
+            int[] mas = new int[masA.Length + masB.Length];
+
+            try
+            {
+                if (masB.Length <= masA.Length)
+                {
+                    for (int i = 0; i < mas.Length; i++)
+                    {
+                        if (c < masB.Length)
+                        {
+                            if (i % 2 == 0)
+                            {
+                                mas[i] = masA[k];
+                                k++;
+                                index = k;
+                            }
+                            else if (i % 2 != 0)
+                            {
+                                mas[i] = masB[l];
+                                l++;
+                                c++;
+                            }
+                        }
+                        else
+                        {
+                            mas[i] = masA[index];
+                            index++;
+                        }
+                    }
+                    for (int i = 0; i < mas.Length; i++)
+                    {
+                        Console.Write(mas[i] + " ");
+                    }
+                }
+
+                else if (masB.Length > masA.Length)
+                {
+                    Console.WriteLine("Ошибка: массив B больше массива A");
+                }
+            }
+            catch { }
         }
         public static void N16()
         {
@@ -923,14 +982,61 @@ namespace laba3
                 }
             }
             Console.WriteLine(" ");
+            double sum = 0;
+            double sre = 0;
             try
             {
 
-            double sre = mas.Sum;
+                for (int i = 0; i < mas.Length; i++)
+                {
+              sum += mas[i];
+
+                }
+                sre = sum / mas.Length;
+           
             }
             catch { }
-
+            int c = 0;
+            for (int i = 0; i < mas.Length; i++)
+            {
+                if (mas[i] < sre)
+                {
+                    c++;
+                }
+            }
+            int k = -1;
             Console.WriteLine(sre);
+            double[] mas2 = new double[c];
+            for (int i = 0; i < mas.Length; i++)
+            {
+                if (mas[i] < sre)
+                {
+                    try
+                    {
+                        k++;
+                    mas2[k] = mas[i];
+                    }
+                    catch { }
+                }
+                try
+                {
+
+              
+                }
+                catch { }
+            }
+            for (int i = 0; i < mas2.Length; i++)
+            {
+                Console.Write(" " + mas2[i]);
+            }
+        }
+        public static void N17()
+        {
+
+        }
+        public static void N18()
+        {
+
         }
     }
 }
