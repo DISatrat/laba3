@@ -1032,9 +1032,140 @@ namespace laba3
         }
         public static void N17()
         {
+            Console.WriteLine("Введите элементы массива через пробел");
+            string line = Console.ReadLine();
+            string[] splitString = line.Split(' ');
+            int[] mas = new int[splitString.Length];
+            for (int i = 0; i < splitString.Length; i++)
+                mas[i] = int.Parse(splitString[i]);
 
+            int max = -1000;
+            int min = 1000;
+            int iMax = 0;
+            int iMin = 0;
+            double sum = 0;
+            int k = 0;
+            int h = 0;
+            double c = 0;
+            double srArif = 0;
+            try
+            {
+                for (int i = 0; i < mas.Length; i++)
+                {
+                    if (mas[i] > max)
+                    {
+                        max = mas[i];
+                        iMax = i;
+                    }
+                    if (mas[i] < min)
+                    {
+                        min = mas[i];
+                        iMin = i;
+                    }
+                }
+
+                for (int i = 0; i < mas.Length; i++)
+                {
+                    if (mas[i] > 0)
+                    {
+                        k++;
+                    }
+                    if (mas[i] < 0)
+                    {
+                        h++;
+                    }
+                }
+
+                if (iMax < iMin)
+                {
+                    if (k > 0)
+                    {
+                        for (int i = 0; i < mas.Length; i++)
+                        {
+                            if (mas[i] > 0)
+                            {
+                                sum += mas[i];
+                                c++;
+                            }
+                        }
+                        Console.WriteLine(sum + " " + c);
+                        srArif = sum / c;
+                        Console.WriteLine("Среднее арифметическое " + srArif);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Массив не содержит положительных элементов");
+                    }
+                }
+                else if (iMax > iMin)
+                {
+                    if (h > 0)
+                    {
+                        for (int i = 0; i < mas.Length; i++)
+                        {
+                            if (mas[i] < 0)
+                            {
+                                sum += mas[i];
+                                c++;
+                            }
+                        }
+                        srArif = sum / c;
+                        Console.WriteLine("Среднее арифметическое " + srArif);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Массив не содержит отрицательных элементов");
+                    }
+                }
+            }
+            catch { }
         }
         public static void N18()
+        {
+
+        }
+        public static void N19()
+        {
+            Console.WriteLine("Введите элементы массива через пробел");
+            string line = Console.ReadLine();
+            string[] splitString = line.Split(' ');
+            int[] mas = new int[splitString.Length];
+            for (int i = 0; i < splitString.Length; i++)
+                mas[i] = int.Parse(splitString[i]);
+
+            int max = -1000;
+            int iMax = 0;
+            int sum = 0;
+
+            for (int i = 0; i < mas.Length; i++)
+            {
+                sum += mas[i];
+            }
+
+            for (int i = 0; i < mas.Length; i++)
+            {
+                if (mas[i] > max)
+                {
+                    max = mas[i];
+                    iMax = i;
+                }
+            }
+
+            if (max > sum)
+            {
+                mas[iMax] = 0;
+            }
+            else
+            {
+                mas[iMax] *= 2;
+            }
+
+            for (int i = 0; i < mas.Length; i++)
+            {
+                Console.Write(mas[i] + " ");
+            }
+        }
+        public static void N20()
         {
 
         }
