@@ -10,7 +10,7 @@ namespace laba3
     {
         static void Main(string[] args)
         {
-            N16();
+            N20();
             Console.ReadLine();
 
 
@@ -1122,7 +1122,70 @@ namespace laba3
         }
         public static void N18()
         {
+            Console.WriteLine("Введите размер массива");
+            int l = int.Parse(Console.ReadLine());
+            int[] mas = new int[l];
+            Console.WriteLine("Введите элементы массива через пробел");
+            string line = Console.ReadLine();
+            string[] splitString = line.Split(' ');
+            for (int i = 0; i <= l; i++)
+            {
+                try
+                {
+                    int element = Convert.ToInt32(splitString[i]);
+                    mas[i] = element;
+                    Console.Write(" " + mas[i]);
+                }
+                catch
+                {
 
+                }
+            }
+            Console.WriteLine(" ");
+
+            int chetMax = -1000;
+            int k = 0;
+            int nechetMax = -1000;
+            for (int i = 0; i < mas.Length; i+=2)
+            {
+                if (mas[i] > chetMax)
+                {
+                    k = mas[i];
+                    chetMax = k;
+                }
+            }
+            Console.WriteLine(chetMax);
+
+            int c = 0;
+            for (int i = 0; i < mas.Length; i++)
+            {
+                if (i % 2 != 0)
+                {
+                    c = mas[i];
+                    nechetMax = c;
+                }
+            }
+            Console.WriteLine(nechetMax);
+
+            if (chetMax > nechetMax)
+            {
+                for (int i = 0; i < mas.Length/2; i++)
+                {
+                    mas[i] = 0;
+                }
+            }
+            else
+            {
+                for (int i = mas.Length/2; i < mas.Length; i++)
+                {
+                    mas[i] = 0;
+                }
+            }
+            for (int i = 0; i < mas.Length; i++)
+            {
+
+            Console.Write(" "+mas[i]);
+            }
         }
         public static void N19()
         {
@@ -1167,7 +1230,71 @@ namespace laba3
         }
         public static void N20()
         {
+            Console.WriteLine("Введите размер массива");
+            int l = int.Parse(Console.ReadLine());
+            int[] mas = new int[l];
+            Console.WriteLine("Введите элементы массива через пробел");
+            string line = Console.ReadLine();
+            string[] splitString = line.Split(' ');
+            for (int i = 0; i <= l; i++)
+            {
+                try
+                {
+                    int element = Convert.ToInt32(splitString[i]);
+                    mas[i] = element;
+                    Console.Write(" " + mas[i]);
+                }
+                catch
+                {
 
+                }
+            }
+            Console.WriteLine(" ");
+
+            int k = 0;
+            int Min = 1000;
+            int c = 0;
+            for (int i = 0; i < mas.Length; i++)
+            {
+                if (mas[i] < Min)
+                {
+                    k = mas[i];
+                    Min = k;
+                    c = i;
+                }
+            }
+            
+            int otric = 0;
+            for (int i = 0; i < mas.Length; i++)
+            {
+                if (mas[i] < 0)
+                {
+                    otric = i;
+                    break;
+                }
+            }
+            
+            int sum = 0;
+               if (otric < c)
+               {
+                   for (int j = 0; j < mas.Length; j+=2)
+                   {
+                    sum += mas[j];
+                   }
+               }
+            else
+            {
+                for (int i = 0; i < mas.Length; i++)
+                {
+                    if (i % 2 != 0)
+                    {
+                        sum += mas[i];
+                    }
+                }
+            }
+           
+                Console.WriteLine("сумм= "+sum);
+            
         }
     }
 }
