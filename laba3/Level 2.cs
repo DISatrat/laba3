@@ -660,59 +660,45 @@
 //        }
 //        public static void N11()
 //        {
-//            Console.WriteLine("Введите элементы массива через пробел");
+//           Console.WriteLine("Введите элементы массива через пробел");
 //            string line = Console.ReadLine();
-//            string[] splitString = line.Split(' ');
-//            int[] mas = new int[splitString.Length];
-//            for (int i = 0; i < splitString.Length; i++)
+//string[] splitString = line.Split(' ');
+//int[] mas = new int[splitString.Length];
+//            for (int i = 0; i<splitString.Length; i++)
 //                mas[i] = int.Parse(splitString[i]);
-//            Console.WriteLine("Введите P");
+//Console.WriteLine("Введите P");
 //            int p = int.Parse(Console.ReadLine());
 
-//            int index = 0;
 
-//            try
-//            {
-//                for (int i = 0; i <= mas.Length; i++)
+
+//int index = 0;
+//int z = 0;
+
+//                for (int i = 0; i<mas.Length; i++)
 //                {
 //                    if (mas[i] > 0)
 //                    {
 //                        index = i;
 //                    }
 //                }
-//            }
-//            catch { }
 
-//            int[] mas2 = new int[mas.Length + 1];
+//                Array.Resize(ref mas, mas.Length + 1);
 
-//            try
-//            {
-//                for (int i = 0; i <= mas.Length; i++)
+//                for (int i = 0; i<mas.Length-1; i++)
 //                {
-//                    if (i == index + 1)
+//                    if (i >= index + 1)
 //                    {
-//                        mas2[i] = p;
-//                    }
-//                    else if (i <= index)
-//                    {
-//                        mas2[i] = mas[i];
-//                    }
-//                    else if (i >= index + 1)
-//                    {
-//                        mas2[i] = mas[i - 1];
+//                        z = mas[i];
+//                        mas[i + 1] = z;
 //                    }
 //                }
-//            }
-//            catch { }
 
-//            try
-//            {
-//                for (int i = 0; i <= mas2.Length; i++)
+//                mas[index + 1]=p;
+
+//                for (int i = 0; i<mas.Length; i++)
 //                {
-//                    Console.Write(mas2[i] + " ");
+//                    Console.Write(mas[i] + " ");
 //                }
-//            }
-//            catch { }
 //        }
 //        public static void N12()
 //        {

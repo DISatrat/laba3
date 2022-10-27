@@ -83,32 +83,33 @@ namespace laba3
                 }
             }
             Console.WriteLine(" ");
+
             int c = 0;
             int k = -1;
             try
             {
                 for (int i = 0; i < mas.Length; i++)
                 {
-                    if (mas[i] < 0)
+                    if (mas[i] > 0)
                     {
                         c++;
                     }
                 }
-
-                int[] mas2 = new int[mas.Length - c];
 
                 for (int i = 0; i < mas.Length; i++)
                 {
                     if (mas[i] > 0)
                     {
                         k++;
-                        mas2[k] = mas[i];
+                        mas[k] = mas[i];
+                        
                     }
                 }
+                Array.Resize(ref mas, c);
 
                 for (int i = 0; i < mas.Length; i++)
                 {
-                    Console.Write(mas2[i] + " ");
+                    Console.Write(mas[i] + " ");
                 }
             }
             catch { }
